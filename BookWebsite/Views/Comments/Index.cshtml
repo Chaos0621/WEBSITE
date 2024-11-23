@@ -1,0 +1,75 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<BookWebsite.Models.Comment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section Styles {
+    <link href="~/Content/comments.css" rel="stylesheet" type="text/css" />
+}
+
+<h2>Comments</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("Index", "Comments", FormMethod.Get, new { @class = "form-inline" }))
+{
+    <label>Choose the book: </label>
+    <div class="form-group" style="display: flex;">
+        @Html.DropDownList("title", (SelectList)ViewBag.books, "Select a book", new { @class = "form-control" })
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Book)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().PostedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Email)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        var localTime = TimeZoneInfo.ConvertTimeFromUtc(item.PostedDate, TimeZoneInfo.Local);
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Book.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => localTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CommentId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CommentId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CommentId })
+            </td>
+        </tr>
+    }
+
+</table>
+<div>
+    @Html.PagedListPager(
+                Model,
+                page => Url.Action("Index", new { title = ViewBag.SelectedBooks, page = page }),
+                new PagedListRenderOptions { Display = PagedListDisplayMode.IfNeeded }
+            )
+</div>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BookWebsite.Models.UserBooks>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Library</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Book.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsFavorite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastAccessed)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Book.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsFavorite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastAccessed)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserBookId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UserBookId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserBookId })
+        </td>
+    </tr>
+}
+
+</table>

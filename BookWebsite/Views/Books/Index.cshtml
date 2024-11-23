@@ -1,0 +1,74 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<BookWebsite.Models.Book>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Books</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("Index", "Books", FormMethod.Get, new { @class = "navbar-form navbar-left", style = "display: flex" }))
+{
+    <div class="form-group">
+        @Html.TextBox("search", null, new { @class = "form-control", @placeholder = "Search books" })
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Genre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().PublishDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.BookId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.BookId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.BookId })
+            </td>
+        </tr>
+    }
+</table>
+<div class="pagination-container">
+    @Html.PagedListPager(
+            Model,
+            page => Url.Action("Index", new { page, search = ViewBag.Search }),
+            new PagedListRenderOptions
+            {
+                DisplayLinkToFirstPage = PagedList.Mvc.PagedListDisplayMode.Always,
+                DisplayLinkToLastPage = PagedList.Mvc.PagedListDisplayMode.Always,
+                DisplayLinkToPreviousPage = PagedList.Mvc.PagedListDisplayMode.Always,
+                DisplayLinkToNextPage = PagedList.Mvc.PagedListDisplayMode.Always,
+                MaximumPageNumbersToDisplay = 5
+            }
+        )
+</div>

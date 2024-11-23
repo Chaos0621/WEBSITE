@@ -1,0 +1,71 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model BookWebsite.ViewModels.BookDetailsViewModel
+
+@{
+    ViewBag.Title = "Book Details";
+    var localPublishTime = TimeZoneInfo.ConvertTimeFromUtc(Model.Book.PublishDate, TimeZoneInfo.Local);
+    var nextSortOrder = Model.CurrentSort == "desc" ? "" : "desc";
+}
+
+<h2>@Model.Book.Title</h2>
+<p><strong>Author:</strong> @Model.Book.Author</p>
+<p><strong>Description:</strong> @Model.Book.Description</p>
+<p><strong>Genre:</strong> @Model.Book.Genre</p>
+<p><strong>Published Date:</strong> @localPublishTime.ToString("dd-MM-yyyy")</p>
+
+<hr />
+
+<h3>Chapters</h3>
+<p>
+    @Html.ActionLink(
+                    Model.CurrentSort == "desc" ? "Sort by Chapter Number Ascending" : "Sort by Chapter Number Descending",
+                    "Details",
+                    new { id = Model.Book.BookId, sortBy = nextSortOrder },
+                    new { @class = "btn btn-secondary" }
+                )
+</p>
+
+@if (Model.PagedChapters.Any())
+{
+    <ul>
+        @foreach (var chapter in Model.PagedChapters)
+        {
+            <li>
+                @chapter.ChapterNumber. @Html.ActionLink(chapter.Title, "Details", "Chapters", new { id = chapter.ChapterId }, null)
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No chapters available for this book.</p>
+}
+
+<hr />
+
+<h3>Comments</h3>
+@if (Model.PagedComments.Any())
+{
+    <ul>
+        @foreach (var comment in Model.PagedComments)
+        {
+            var localTime = TimeZoneInfo.ConvertTimeFromUtc(comment.PostedDate, TimeZoneInfo.Local);
+            <li>
+                <p><strong>@comment.Email</strong> (@localTime.ToString("HH:mm:ss dd-MM-yyyy"))</p>
+                <p>@comment.Content</p>
+            </li>
+        }
+    </ul>
+
+    <div>
+        @Html.PagedListPager(
+                           Model.PagedComments,
+                           page => Url.Action("Details", new { id = Model.Book.BookId, commentPage = page })
+                       )
+    </div>
+}
+else
+{
+    <p>No comments yet. Be the first to comment!</p>
+}

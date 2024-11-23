@@ -1,0 +1,140 @@
+﻿/* 修改菜单栏链接的颜色 */
+.navbar-nav .nav-link {
+    color: black !important; /* 使用 !important 强制应用黑色 */
+}
+
+    /* 在鼠标悬停时修改颜色 */
+.navbar-nav .nav-link:hover {
+        color: #333 !important; /* 可以选择稍微浅一点的黑色 */
+    }
+
+/* 通用样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #00b09b, #96c93d); /* 渐变背景 */
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3 {
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* 页面容器 */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+/* 导航栏样式 */
+nav {
+    background: rgba(0, 0, 0, 0.7); /* 黑色半透明背景 */
+    padding: 10px 0;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+    font-size: 18px;
+    padding: 8px 15px;
+    transition: background-color 0.3s ease;
+}
+
+    .navbar-nav .nav-link:hover {
+        background-color: #ff9800; /* 橙色背景 */
+        border-radius: 5px;
+    }
+
+/* 搜索框样式 */
+.navbar-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .navbar-form .form-group {
+        margin-right: 10px;
+    }
+
+    .navbar-form .form-control {
+        width: 200px;
+        border-radius: 8px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-form button {
+        background-color: #4CAF50;
+        color: white;
+        font-size: 16px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .navbar-form button:hover {
+            background-color: #45a049;
+        }
+
+/* 页脚样式 */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .navbar-form .form-control {
+        width: 150px;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .navbar-form .form-control {
+        width: 120px;
+    }
+
+    footer {
+        font-size: 14px;
+    }
+}

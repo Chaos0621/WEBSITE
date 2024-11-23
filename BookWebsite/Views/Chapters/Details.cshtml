@@ -1,0 +1,36 @@
+﻿@model BookWebsite.Models.Chapter
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Chapter Details</h2>
+
+<div>
+    <h3>Chapter Number: @Model.ChapterNumber</h3>
+    <h3>Title: @Model.Title</h3>
+</div>
+
+<div>
+    <h4>Content:</h4>
+    <div style="white-space: pre-wrap;">
+        @Html.Raw(HttpUtility.HtmlDecode(Model.Content))
+    </div>
+</div>
+
+<div class="chapter-navigation">
+    @if (ViewBag.PreviousChapterId != null)
+    {
+        <a href="@Url.Action("Details", "Chapters", new { id = ViewBag.PreviousChapterId })" class="btn btn-primary">Previous Chapter</a>
+    }
+
+    @if (ViewBag.NextChapterId != null)
+    {
+        <a href="@Url.Action("Details", "Chapters", new { id = ViewBag.NextChapterId })" class="btn btn-primary">Next Chapter</a>
+    }
+</div>
+
+<p>
+    @Html.ActionLink("Back to Book", "Details", "Books", new { id = Model.BookId }, new { @class = "btn btn-secondary" })
+</p>
+

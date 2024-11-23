@@ -1,0 +1,49 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<BookWebsite.Models.Book>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>Books List</h2>
+@using (Html.BeginForm("Index", "Home", FormMethod.Get, new { @class = "form-inline" }))
+{
+    <label>Choose your prefered genre: </label>
+    <div class="form-group" style="display: flex;">
+        @Html.DropDownList("genre", (SelectList)ViewBag.Genres, "Choose genre", new { @class = "form-control" })
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </div>
+
+}
+<table class="table">
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>
+                    <form action="@Url.Action("Details", "Books", new { id = book.BookId })" method="get">
+                        <button type="submit" class="btn btn-primary">
+                            @book.Title - @book.Author
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="pagination-container">
+    @Html.PagedListPager(
+            Model,
+            page => Url.Action("Index", new { page, genre = ViewBag.SelectedGenre }),
+            new PagedListRenderOptions
+            {
+                DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                DisplayEllipsesWhenNotShowingAllPageNumbers = true,
+                MaximumPageNumbersToDisplay = 5
+            }
+        )
+</div>

@@ -1,0 +1,38 @@
+﻿body {
+}
+/* CommentsController 页面特定样式 */
+
+.comments-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+    .comments-section h2 {
+        font-size: 24px;
+        color: #333;
+    }
+
+.comment-card {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+    .comment-card .content {
+        font-size: 16px;
+        color: #555;
+    }
+
+    .comment-card .email {
+        font-style: italic;
+        color: #888;
+    }
+
+    .comment-card .posted-date {
+        font-size: 14px;
+        color: #aaa;
+    }

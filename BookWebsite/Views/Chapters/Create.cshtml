@@ -1,0 +1,33 @@
+﻿@model BookWebsite.Models.Chapter
+
+@{
+    ViewBag.Title = "Create Chapter";
+}
+
+<h2>Create Chapter</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="Title">Chapter Title</label>
+        @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label for="ChapterNumber">Chapter Number</label>
+        @Html.TextBoxFor(model => model.ChapterNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.ChapterNumber, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="Content">Content</label>
+        @Html.TextAreaFor(model => model.Content, new { @class = "form-control", rows = 5 })
+    </div>
+
+    @Html.HiddenFor(model => model.BookId)
+
+    <button type="submit" class="btn btn-primary">Create Chapter</button>
+}
