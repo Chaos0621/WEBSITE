@@ -1,0 +1,157 @@
+﻿/* 设定页面背景和字体 */
+body {
+    background-color: #f4f7fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* 页面标题 */
+h2#title {
+    font-size: 2.5rem;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* 登录表单容器 */
+#loginForm {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 表单标签 */
+label {
+    font-weight: bold;
+    color: #555;
+}
+
+/* 输入框样式 */
+.form-control {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+    .form-control:focus {
+        border-color: #5bc0de;
+        outline: none;
+        box-shadow: 0 0 5px rgba(91, 192, 222, 0.5);
+    }
+
+/* 错误消息 */
+.text-danger {
+    font-size: 0.875rem;
+    color: #e74c3c;
+    margin-top: 5px;
+}
+
+/* 输入框容器 */
+.row {
+    margin-bottom: 20px;
+}
+
+/* 按钮样式 */
+.btn {
+    background-color: #5bc0de;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+    .btn:hover {
+        background-color: #31b0d5;
+    }
+
+/* 记住我复选框 */
+.checkbox {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+    .checkbox input[type="checkbox"] {
+        margin-right: 10px;
+    }
+
+/* 社交登录表单 */
+#socialLoginForm {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+    /* 外部登录项样式 */
+    #socialLoginForm .form-group {
+        margin-bottom: 15px;
+    }
+
+    #socialLoginForm .btn-social {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+        text-align: center;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    /* 外部登录按钮颜色 */
+    #socialLoginForm .btn-facebook {
+        background-color: #3b5998;
+        color: white;
+    }
+
+    #socialLoginForm .btn-google {
+        background-color: #db4437;
+        color: white;
+    }
+
+    #socialLoginForm .btn-facebook:hover {
+        background-color: #2d4373;
+    }
+
+    #socialLoginForm .btn-google:hover {
+        background-color: #c1351d;
+    }
+
+/* 页脚 */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #777;
+    font-size: 0.875rem;
+}
+
+/* 响应式设计：确保表单在小屏幕上的显示效果 */
+@media (max-width: 768px) {
+    .col-md-8, .col-md-4 {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .navbar-toggler {
+        border-color: #ddd;
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .form-control {
+        font-size: 1rem;
+    }
+}

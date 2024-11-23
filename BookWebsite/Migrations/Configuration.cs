@@ -50,8 +50,8 @@
             // Generate 40 books
             for (int i = 1; i <= 40; i++)
             {
-                var bookTitle = $"Book {i}";
-                var author = $"Author {random.Next(1, 21)}"; // Random author
+                var bookTitle = $"Book {i}"; // English book title
+                var author = $"Author {random.Next(1, 21)}"; // English author name
                 var genre = genres[random.Next(genres.Length)]; // Random genre
                 var description = $"This is the description for {bookTitle}.";
                 var publishDate = DateTime.Now.AddDays(-random.Next(1, 1000));
@@ -102,6 +102,5 @@
 
             context.SaveChanges();
         }
-
     }
 }

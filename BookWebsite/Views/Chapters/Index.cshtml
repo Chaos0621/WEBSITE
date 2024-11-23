@@ -5,6 +5,10 @@
 @{
     ViewBag.Title = "Chapters";
 }
+@section Styles
+{
+    <link href="~/Content/Chapters.css" rel="stylesheet" type="text/css" />
+    }
 
 <h2>Chapters</h2>
 @using (Html.BeginForm("Index", "Chapters", FormMethod.Get, new { @class = "form-inline" }))

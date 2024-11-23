@@ -5,33 +5,39 @@
 @{
     ViewBag.Title = "Home Page";
 }
+@section Styles {
+    <link href="~/Content/Home.css" rel="stylesheet" type="text/css" />
+}
+
 
 <h2>Books List</h2>
+
 @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { @class = "form-inline" }))
 {
-    <label>Choose your prefered genre: </label>
+    <label>Choose your preferred genre: </label>
     <div class="form-group" style="display: flex;">
         @Html.DropDownList("genre", (SelectList)ViewBag.Genres, "Choose genre", new { @class = "form-control" })
         <button type="submit" class="btn btn-primary">Filter</button>
     </div>
-
 }
-<table class="table">
-    <tbody>
-        @foreach (var book in Model)
-        {
-            <tr>
-                <td>
-                    <form action="@Url.Action("Details", "Books", new { id = book.BookId })" method="get">
-                        <button type="submit" class="btn btn-primary">
-                            @book.Title - @book.Author
-                        </button>
-                    </form>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+
+<!-- Display books vertically as cards -->
+<div class="book-list">
+    @foreach (var book in Model)
+    {
+        <div class="book-card">
+            <form action="@Url.Action("Details", "Books", new { id = book.BookId })" method="get">
+                <button type="submit" class="btn btn-primary book-button">
+                    <h3>@book.Title</h3>
+                    <p><strong>Author:</strong> @book.Author</p>
+                    <p><strong>Genre:</strong> @book.Genre</p>
+                </button>
+            </form>
+        </div>
+    }
+</div>
+
+<!-- Pagination -->
 <div class="pagination-container">
     @Html.PagedListPager(
             Model,

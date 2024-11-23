@@ -1,0 +1,150 @@
+﻿/* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    padding: 20px;
+}
+
+/* Title styling */
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #e60000; /* Red color */
+    margin-bottom: 30px;
+}
+
+/* Create new button styling */
+p {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+    p a {
+        background-color: #e60000; /* Red color */
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+        p a:hover {
+            background-color: #b30000; /* Darker red on hover */
+        }
+
+/* Search form styling */
+.navbar-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.form-control {
+    width: 250px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #e60000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    button:hover {
+        background-color: #b30000; /* Darker red on hover */
+    }
+
+/* Table styling (vertical layout) */
+.table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+    .table th, .table td {
+        padding: 12px 20px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .table th {
+        background-color: #e60000; /* Red color */
+        color: white;
+    }
+
+    .table td {
+        background-color: #f9f9f9;
+    }
+
+        .table td a {
+            text-decoration: none;
+            color: #e60000; /* Red color */
+            font-size: 0.9rem;
+        }
+
+            .table td a:hover {
+                color: #b30000; /* Darker red on hover */
+            }
+
+/* Pagination container */
+.pagination-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.pagedListPager a {
+    padding: 8px 16px;
+    margin: 0 5px;
+    border-radius: 4px;
+    background-color: #e60000; /* Red color */
+    color: white;
+    text-decoration: none;
+}
+
+    .pagedListPager a:hover {
+        background-color: #b30000; /* Darker red on hover */
+    }
+
+    .pagedListPager a:active {
+        background-color: #7f0000; /* Even darker red on click */
+    }
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .navbar-form {
+        flex-direction: column;
+    }
+
+    .form-control {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .table {
+        font-size: 0.9rem;
+    }
+
+        .table th, .table td {
+            padding: 10px 15px;
+        }
+
+    .pagination-container {
+        font-size: 0.9rem;
+    }
+}
